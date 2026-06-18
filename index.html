@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="esco.cat és la plataforma de participació cívica on pots votar les mateixes lleis que el Parlament de Catalunya i comparar els resultats.">
+<meta property="og:title" content="esco.cat — El teu escó al Parlament de Catalunya">
+<meta property="og:description" content="Vota les mateixes lleis que els diputats. Descobreix amb quin partit t'alines. Compara els resultats amb el Parlament real.">
+<meta property="og:type" content="website">
+<title>esco.cat — El teu escó al Parlament de Catalunya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body,button,input{font-family:'Plus Jakarta Sans',sans-serif}
+:root{--gr:#16876B;--grd:#0A5743;--grl:#E4F3EE;--tx:#1A2622;--mu:#6B7873;--fa:#A9B3AE;--bo:#E8E6E0;--bg:#F6F5F1;--su:#fff}
+body{background:var(--bg);color:var(--tx);line-height:1.6}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:var(--su);border-bottom:1px solid var(--bo);position:sticky;top:0;z-index:10;box-shadow:0 1px 8px rgba(26,38,34,.04)}
+.nav-logo{font-size:21px;font-weight:800;color:var(--tx);letter-spacing:-.5px;text-decoration:none}
+.nav-logo span{color:var(--gr)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-demo{font-size:13px;font-weight:700;padding:8px 16px;border-radius:10px;border:1.5px solid var(--bo);background:var(--su);color:var(--tx);cursor:pointer;text-decoration:none;transition:all .15s}
+.nav-demo:hover{border-color:var(--gr);color:var(--gr)}
+.nav-cta{font-size:13px;font-weight:700;padding:8px 18px;border-radius:10px;background:var(--gr);color:#fff;border:none;cursor:pointer;transition:transform .1s}
+.nav-cta:hover{transform:translateY(-1px)}
+
+/* HERO */
+.hero{background:linear-gradient(155deg,#0A5743 0%,#16876B 55%,#1F9F7E 100%);padding:88px 32px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-100px;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.05)}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04)}
+.hero-label{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:14px;position:relative}
+.hero-logo{font-family:'Fraunces',serif;font-size:56px;font-weight:700;color:#fff;letter-spacing:-2px;margin-bottom:10px;position:relative;line-height:1}
+.hero-logo span{color:rgba(255,255,255,.45)}
+.hero-tag{font-size:19px;color:rgba(255,255,255,.88);margin-bottom:18px;position:relative;font-weight:500;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.4}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.72);max-width:480px;margin:0 auto 38px;line-height:1.65;position:relative}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.hero-btn-primary{padding:14px 28px;border-radius:13px;background:#fff;color:var(--grd);font-size:15px;font-weight:800;border:none;cursor:pointer;transition:transform .12s,box-shadow .15s;box-shadow:0 4px 16px rgba(0,0,0,.15);text-decoration:none;display:inline-block}
+.hero-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.hero-btn-secondary{padding:14px 28px;border-radius:13px;background:rgba(255,255,255,.15);color:#fff;font-size:15px;font-weight:700;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:all .15s;text-decoration:none;display:inline-block}
+.hero-btn-secondary:hover{background:rgba(255,255,255,.22)}
+.hero-note{font-size:12px;color:rgba(255,255,255,.5);margin-top:16px;position:relative}
+
+/* STATS */
+.stats{display:flex;justify-content:center;background:var(--su);border-bottom:1px solid var(--bo)}
+.stat{flex:1;max-width:220px;text-align:center;padding:28px 16px;border-right:1px solid var(--bo)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:30px;font-weight:700;color:var(--gr)}
+.stat-l{font-size:13px;color:var(--mu);margin-top:3px;font-weight:500}
+
+/* HOW IT WORKS */
+.section{padding:72px 32px;max-width:900px;margin:0 auto}
+.section-eyebrow{font-size:12px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.section-title{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--tx);margin-bottom:10px;letter-spacing:-.5px;line-height:1.2}
+.section-sub{font-size:15px;color:var(--mu);margin-bottom:44px;max-width:560px;line-height:1.65}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.step{background:var(--su);border-radius:20px;border:1px solid var(--bo);padding:24px 20px;transition:box-shadow .15s,transform .15s}
+.step:hover{box-shadow:0 6px 24px rgba(26,38,34,.06);transform:translateY(-2px)}
+.step-icon{width:50px;height:50px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:24px}
+.step-n{font-size:12px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.step-title{font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px}
+.step-txt{font-size:13px;color:var(--mu);line-height:1.6}
+
+/* FEATURES */
+.features{background:var(--su);border-top:1px solid var(--bo);border-bottom:1px solid var(--bo);padding:72px 32px}
+.features-inner{max-width:900px;margin:0 auto}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:40px}
+.feat{background:var(--bg);border-radius:18px;border:1px solid var(--bo);padding:22px}
+.feat-icon{font-size:26px;margin-bottom:12px}
+.feat-tt{font-size:15px;font-weight:700;color:var(--tx);margin-bottom:5px}
+.feat-sb{font-size:13px;color:var(--mu);line-height:1.55}
+
+/* DEMO PREVIEW */
+.demo-section{padding:72px 32px;max-width:900px;margin:0 auto;text-align:center}
+.demo-frame{margin:36px auto 0;max-width:420px;border-radius:28px;overflow:hidden;box-shadow:0 24px 70px rgba(26,38,34,.18);border:1px solid var(--bo);aspect-ratio:9/16;position:relative;background:#cfcabf}
+.demo-frame iframe{width:100%;height:100%;border:none;display:block}
+.demo-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(15,103,70,.9);cursor:pointer;transition:opacity .2s;border-radius:28px}
+.demo-overlay:hover{background:rgba(15,103,70,.95)}
+.demo-play{display:flex;flex-direction:column;align-items:center;gap:12px}
+.demo-play-btn{width:64px;height:64px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.demo-play-btn svg{margin-left:4px}
+.demo-play-txt{font-size:15px;font-weight:700;color:#fff}
+.demo-play-sub{font-size:12px;color:rgba(255,255,255,.75)}
+
+/* VALORS */
+.values{padding:72px 32px;max-width:900px;margin:0 auto}
+.val-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:40px}
+.val{background:var(--su);border-radius:18px;border:1px solid var(--bo);padding:22px;border-left:4px solid var(--gr)}
+.val-tt{font-size:15px;font-weight:700;color:var(--tx);margin-bottom:7px}
+.val-tx{font-size:13px;color:var(--mu);line-height:1.6}
+
+/* CTA FINAL */
+.cta-final{background:linear-gradient(135deg,#0A5743,#16876B);padding:80px 32px;text-align:center}
+.cta-final-tt{font-family:'Fraunces',serif;font-size:34px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
+.cta-final-sb{font-size:15px;color:rgba(255,255,255,.82);margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.6}
+.form-row{display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.form-inp{flex:1;min-width:210px;padding:14px 16px;border-radius:13px;border:none;font-size:14px;font-weight:600;outline:none;color:var(--tx);font-family:'Plus Jakarta Sans',sans-serif}
+.form-btn{padding:14px 24px;border-radius:13px;background:#0A5743;color:#fff;font-size:14px;font-weight:800;border:2px solid rgba(255,255,255,.25);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:transform .1s}
+.form-btn:hover{transform:translateY(-1px)}
+.form-note{font-size:11px;color:rgba(255,255,255,.5);margin-top:12px}
+.form-success{display:none;background:rgba(255,255,255,.15);border-radius:13px;padding:16px 20px;max-width:420px;margin:0 auto;color:#fff;font-size:14px;font-weight:600}
+
+/* FOOTER */
+footer{background:#111;padding:36px 32px}
+.footer-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.footer-logo span{color:var(--gr)}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:#666;text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:12px;color:#444;margin-top:16px;text-align:center;max-width:900px;margin:16px auto 0}
+
+/* RESPONSIVE */
+@media(max-width:680px){
+  nav{padding:13px 18px}
+  .nav-right .nav-demo{display:none}
+  .hero{padding:64px 20px 56px}
+  .hero-logo{font-size:42px}
+  .hero-tag{font-size:17px}
+  .stats{flex-direction:column;align-items:center}
+  .stat{border-right:none;border-bottom:1px solid var(--bo);max-width:100%;width:100%}
+  .stat:last-child{border-bottom:none}
+  .section,.features,.demo-section,.values,.cta-final{padding:52px 18px}
+  .section-title{font-size:26px}
+  .cta-final-tt{font-size:26px}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">esco<span>.cat</span></a>
+  <div class="nav-right">
+    <a href="/app/" class="nav-demo">Prova la demo</a>
+    <button class="nav-cta" onclick="document.getElementById('cta-email').focus();document.querySelector('.cta-final').scrollIntoView({behavior:'smooth'})">Apunta'm a la llista</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Llançament pròximament</div>
+  <div class="hero-logo">esco<span>.cat</span></div>
+  <div class="hero-tag">El teu escó al Parlament de Catalunya</div>
+  <div class="hero-sub">Vota les mateixes lleis que els diputats. Descobreix amb quin partit t'alines. Compara els resultats de la ciutadania amb el Parlament real.</div>
+  <div class="hero-actions">
+    <a href="/app/" class="hero-btn-primary">Prova la demo</a>
+    <button class="hero-btn-secondary" onclick="document.querySelector('.cta-final').scrollIntoView({behavior:'smooth'})">Vull ser dels primers</button>
+  </div>
+  <div class="hero-note">Llançament previst per a la tardor de 2026 · Sense spam · Cancel·la quan vulguis</div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n">1 persona</div><div class="stat-l">1 vot verificat</div></div>
+  <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Independent i sense publicitat</div></div>
+  <div class="stat"><div class="stat-n">Obert</div><div class="stat-l">Dades públiques i transparents</div></div>
+</div>
+
+<div class="section">
+  <div class="section-eyebrow">Com funciona</div>
+  <div class="section-title">Tan senzill com votar.<br>Tan poderós com la transparència.</div>
+  <div class="section-sub">esco.cat publica cada proposta que debat el Parlament. Tu votes. Els resultats es comparen amb el vot real dels diputats.</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon" style="background:#E4F3EE">🔐</div>
+      <div class="step-n">Pas 1</div>
+      <div class="step-title">Registra't i verifica't</div>
+      <div class="step-txt">Un número de mòbil, un vot. Sense bots, sense comptes falsos. La teva identitat es verifica però mai s'associa públicament als teus vots.</div>
+    </div>
+    <div class="step">
+      <div class="step-icon" style="background:#E8F0FA">📋</div>
+      <div class="step-n">Pas 2</div>
+      <div class="step-title">Llegeix i vota</div>
+      <div class="step-txt">Cada proposta ve amb un resum generat per IA i els arguments principals del debat parlamentari. Tu decideixes amb tota la informació.</div>
+    </div>
+    <div class="step">
+      <div class="step-icon" style="background:#ECEAFB">📊</div>
+      <div class="step-n">Pas 3</div>
+      <div class="step-title">Descobreix la divergència</div>
+      <div class="step-txt">Quan el Parlament vota, els resultats es revelen simultàniament. Veus exactament on la ciutadania i els diputats s'allunyen.</div>
+    </div>
+    <div class="step">
+      <div class="step-icon" style="background:#FCF1DE">🎯</div>
+      <div class="step-n">Pas 4</div>
+      <div class="step-title">Coneix la teva alineació</div>
+      <div class="step-txt">Al llarg del mandat, esco.cat et mostra amb quin grup parlamentari coincideixes més. Basat en els teus vots reals, no en etiquetes ideològiques.</div>
+    </div>
+  </div>
+</div>
+
+<div class="features">
+  <div class="features-inner">
+    <div class="section-eyebrow">Funcionalitats</div>
+    <div class="section-title">Molt més que una eina de votació</div>
+    <div class="section-sub">esco.cat és la primera plataforma que connecta sistemàticament el vot ciutadà amb el vot parlamentari real.</div>
+    <div class="feat-grid">
+      <div class="feat"><div class="feat-icon">🏛️</div><div class="feat-tt">Votacions reals del Parlament</div><div class="feat-sb">Cada proposta que debat el Parlament de Catalunya arriba a esco.cat amb un resum comprensible per a tothom.</div></div>
+      <div class="feat"><div class="feat-icon">📹</div><div class="feat-tt">Posicionament dels grups</div><div class="feat-sb">Cada grup parlamentari pot publicar un vídeo d'un minut explicant la seva posició. Tu votes amb tota la informació.</div></div>
+      <div class="feat"><div class="feat-icon">🔔</div><div class="feat-tt">Notificacions intel·ligents</div><div class="feat-sb">Avís quan s'obre una votació i recordatori 6 hores abans de tancar. Vota quan millor et vagi.</div></div>
+      <div class="feat"><div class="feat-icon">📈</div><div class="feat-tt">Perfil polític propi</div><div class="feat-sb">El teu percentatge d'alineació amb cada partit evoluciona al llarg del mandat. Un retrat dels teus valors basat en fets.</div></div>
+      <div class="feat"><div class="feat-icon">🗣️</div><div class="feat-tt">L'Àgora</div><div class="feat-sb">Pulsos d'opinió i debats oberts en un espai respectuós. Identitat verificada, arguments fonamentats.</div></div>
+      <div class="feat"><div class="feat-icon">🌐</div><div class="feat-tt">Dades obertes</div><div class="feat-sb">Tots els resultats agregats i anonimitzats són públics. Per a periodistes, investigadors i ciutadans.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="section-eyebrow">Demo interactiva</div>
+  <div class="section-title">Explora l'app ara</div>
+  <div class="section-sub" style="margin:0 auto 0">Navega per totes les pantalles i descobreix com funciona esco.cat. És una demostració, no la versió real.</div>
+  <div class="demo-frame" id="demo-frame">
+    <div class="demo-overlay" id="demo-overlay" onclick="loadDemo()">
+      <div class="demo-play">
+        <div class="demo-play-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#16876B"><path d="M6 4l14 8-14 8V4z"/></svg>
+        </div>
+        <div class="demo-play-txt">Provar la demo</div>
+        <div class="demo-play-sub">S'obre l'app interactiva</div>
+      </div>
+    </div>
+    <iframe id="demo-iframe" src="" title="Demo esco.cat" style="display:none"></iframe>
+  </div>
+  <div style="margin-top:14px"><a href="/app/" style="font-size:13px;color:var(--gr);font-weight:700;text-decoration:none">Obrir la demo a pantalla completa →</a></div>
+</div>
+
+<div class="values">
+  <div class="section-eyebrow">Els nostres compromisos</div>
+  <div class="section-title">Un espai diferent</div>
+  <div class="section-sub">esco.cat neix amb un compromís clar sobre com ha de ser la participació política digital.</div>
+  <div class="val-grid">
+    <div class="val"><div class="val-tt">✓ Llibertat d'expressió amb respecte</div><div class="val-tx">Pots defensar qualsevol posició política. esco.cat no censura idees, censura faltes de respecte. Els insults i les desqualificacions no hi tenen lloc.</div></div>
+    <div class="val"><div class="val-tt">✓ Identitat real, debat real</div><div class="val-tx">Tots els membres han verificat la seva identitat. Sense bots ni comptes anònims. Sense manipulació massiva.</div></div>
+    <div class="val"><div class="val-tt">✓ Independent i sense publicitat</div><div class="val-tx">esco.cat no accepta finançament de partits polítics ni mostra publicitat. La seva independència és el seu valor principal.</div></div>
+    <div class="val"><div class="val-tt">✓ Els teus vots, privats</div><div class="val-tx">El teu vot individual mai no s'associa al teu nom públicament. Tots els resultats publicats són agregats i anonimitzats.</div></div>
+  </div>
+</div>
+
+<div class="cta-final">
+  <div class="cta-final-tt">Sigues dels primers membres d'esco.cat</div>
+  <div class="cta-final-sb">La llista d'espera ja és oberta. T'avisem quan l'app estigui llesta.</div>
+  <div class="form-row" id="form-row">
+    <input class="form-inp" id="cta-email" type="email" placeholder="nom@correu.cat" required>
+    <button class="form-btn" onclick="submitEmail()">Apunta'm</button>
+  </div>
+  <div class="form-success" id="form-success">
+    ✓ Apuntat! T'avisarem quan esco.cat estigui llest.
+  </div>
+  <div class="form-note">Sense spam · Cancel·la quan vulguis · Conforme al RGPD</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">esco<span>.cat</span></div>
+    <div class="footer-links">
+      <a href="/app/">Demo</a>
+      <a href="/legal/privadesa.html">Política de privadesa</a>
+      <a href="/legal/termes.html">Termes d'ús</a>
+      <a href="mailto:hola@esco.cat">hola@esco.cat</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    esco.cat és una iniciativa d'Arum Cupedia SL (B09696550) · Malgrat de Mar (Barcelona)
+  </div>
+</footer>
+
+<script>
+function loadDemo(){
+  const overlay=document.getElementById('demo-overlay');
+  const iframe=document.getElementById('demo-iframe');
+  overlay.style.opacity='0';
+  setTimeout(()=>{
+    overlay.style.display='none';
+    iframe.src='/app/';
+    iframe.style.display='block';
+  },200);
+}
+
+function submitEmail(){
+  const email=document.getElementById('cta-email').value;
+  if(!email||!email.includes('@')){
+    document.getElementById('cta-email').style.borderColor='#D6463F';
+    return;
+  }
+  // Aquí s'integrarà Brevo/Mailchimp
+  // Per ara mostra la confirmació visual
+  document.getElementById('form-row').style.display='none';
+  document.getElementById('form-success').style.display='block';
+  console.log('Email registrat:', email);
+}
+</script>
+
+</body>
+</html>
