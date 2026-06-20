@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -132,9 +133,9 @@ footer{background:#111;padding:36px 32px}
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">esco<span>.cat</span></a>
+  <a href="./" class="nav-logo">esco<span>.cat</span></a>
   <div class="nav-right">
-    <a href="/app/" class="nav-demo">Prova la demo</a>
+    <a href="app/" class="nav-demo">Prova la demo</a>
     <button class="nav-cta" onclick="document.getElementById('cta-email').focus();document.querySelector('.cta-final').scrollIntoView({behavior:'smooth'})">Apunta'm a la llista</button>
   </div>
 </nav>
@@ -145,7 +146,7 @@ footer{background:#111;padding:36px 32px}
   <div class="hero-tag">El teu escó al Parlament de Catalunya</div>
   <div class="hero-sub">Vota les mateixes lleis que els diputats. Descobreix amb quin partit t'alines. Compara els resultats de la ciutadania amb el Parlament real.</div>
   <div class="hero-actions">
-    <a href="/app/" class="hero-btn-primary">Prova la demo</a>
+    <a href="app/" class="hero-btn-primary">Prova la demo</a>
     <button class="hero-btn-secondary" onclick="document.querySelector('.cta-final').scrollIntoView({behavior:'smooth'})">Vull ser dels primers</button>
   </div>
   <div class="hero-note">Llançament previst per a la tardor de 2026 · Sense spam · Cancel·la quan vulguis</div>
@@ -221,7 +222,7 @@ footer{background:#111;padding:36px 32px}
     </div>
     <iframe id="demo-iframe" src="" title="Demo esco.cat" style="display:none"></iframe>
   </div>
-  <div style="margin-top:14px"><a href="/app/" style="font-size:13px;color:var(--gr);font-weight:700;text-decoration:none">Obrir la demo a pantalla completa →</a></div>
+  <div style="margin-top:14px"><a href="app/" style="font-size:13px;color:var(--gr);font-weight:700;text-decoration:none">Obrir la demo a pantalla completa →</a></div>
 </div>
 
 <div class="values">
@@ -253,9 +254,9 @@ footer{background:#111;padding:36px 32px}
   <div class="footer-inner">
     <div class="footer-logo">esco<span>.cat</span></div>
     <div class="footer-links">
-      <a href="/app/">Demo</a>
-      <a href="/legal/privadesa.html">Política de privadesa</a>
-      <a href="/legal/termes.html">Termes d'ús</a>
+      <a href="app/">Demo</a>
+      <a href="legal/privadesa.html">Política de privadesa</a>
+      <a href="legal/termes.html">Termes d'ús</a>
       <a href="mailto:hola@esco.cat">hola@esco.cat</a>
     </div>
   </div>
@@ -271,7 +272,7 @@ function loadDemo(){
   overlay.style.opacity='0';
   setTimeout(()=>{
     overlay.style.display='none';
-    iframe.src='/app/';
+    iframe.src='app/';
     iframe.style.display='block';
   },200);
 }
