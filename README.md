@@ -41,5 +41,5 @@ npx serve .
 
 ## Contacte
 
-hola@esco.cat
+hola@esco.cat 
 
